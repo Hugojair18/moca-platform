@@ -1,12 +1,16 @@
-import { useEffect } from "react";
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL as string;
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import VisuospatialTest from "./pages/VisuospatialTest";
+import NamingTest from "./pages/NamingTest";
 
 export default function App() {
-  useEffect(() => {
-    axios.get(`${API_URL}/health`).then((res) => console.log(res.data));
-  }, []);
-
-  return <h1>MoCA Platform</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<div className="p-8 text-center text-slate-600">Login Page (WIP)</div>} />
+      <Route path="/test/start" element={<div className="p-8 text-center text-slate-600">Start Test Page (WIP)</div>} />
+      <Route path="/tests/:testId/visuospatial" element={<VisuospatialTest />} />
+      <Route path="/tests/:testId/naming" element={<NamingTest />} />
+    </Routes>
+  );
 }
