@@ -89,6 +89,9 @@ export default function VisuospatialTest() {
 
             // alert(`Evaluación AI: ${evalResponse.data.score}/${evalResponse.data.maxScore}\n${evalResponse.data.observations}`);
 
+            // Save to LocalStorage for Final Report
+            localStorage.setItem(`moca_${testId}_visuospatial`, evalResponse.data.score.toString());
+
             // NOTE: We do NOT auto-advance anymore. User clicks "Continuar".
 
 

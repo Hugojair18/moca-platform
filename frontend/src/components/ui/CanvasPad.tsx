@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, forwardRef, useImperativeHandle } from 'react';
-import { Button } from './Button';
+
 
 export interface CanvasPadRef {
     clear: () => void;

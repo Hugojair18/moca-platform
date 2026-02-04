@@ -25,7 +25,7 @@ export default function LandingPage() {
                                 La herramienta estándar para la detección de deterioro cognitivo, ahora digitalizada para una aplicación precisa, segura y accesible.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Button href="/test/start" size="lg" className="w-full sm:w-auto shadow-lg shadow-brand-500/20">
+                                <Button href="/tests/demo/visuospatial" size="lg" className="w-full sm:w-auto shadow-lg shadow-brand-500/20">
                                     Iniciar Evaluación
                                 </Button>
                                 <Button href="/login" variant="secondary" size="lg" className="w-full sm:w-auto">
@@ -71,7 +71,7 @@ export default function LandingPage() {
                                         Resultados confidenciales
                                     </li>
                                 </ul>
-                                <Button href="/test/start" fullWidth variant="outline">Comenzar como Paciente</Button>
+                                <Button href="/tests/demo/visuospatial" fullWidth variant="outline">Comenzar como Paciente</Button>
                             </Card>
 
                             <Card className="hover:border-brand-300">
@@ -105,7 +105,7 @@ export default function LandingPage() {
                 </section>
 
                 {/* HOW IT WORKS */}
-                <section className="py-20 bg-slate-50 border-y border-slate-200">
+                <section id="about" className="py-20 bg-slate-50 border-y border-slate-200">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-bold text-slate-900">¿Cómo funciona?</h2>
@@ -195,7 +195,7 @@ export default function LandingPage() {
                 </section>
 
                 {/* FAQ */}
-                <section className="py-20 bg-slate-50">
+                <section id="faq" className="py-20 bg-slate-50">
                     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-bold text-slate-900">Preguntas Frecuentes</h2>

@@ -8,20 +8,32 @@ export const Navbar = () => {
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
                         <Link to="/" className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold text-lg">
-                                M
-                            </div>
+                            <img
+                                src="/logo.png"
+                                alt="MoCA Logo"
+                                className="w-8 h-8 rounded-lg object-contain"
+                                onError={(e) => {
+                                    // Fallback text if image missing (until user uploads)
+                                    e.currentTarget.style.display = 'none';
+                                    e.currentTarget.parentElement?.classList.add('fallback-logo');
+                                }}
+                            />
+                            {/* Fallback "M" visible only if image fails (requires CSS or JS, but for now simple img is enough as per request) */}
+                            {/* Actually, user said "change for an image they will upload". I'll just put the img tag. 
+                                To make it nice, I'll keep the div structure if needed, but the user explicitly wants an image.
+                                Let's just use a clean img tag.
+                            */}
                             <span className="text-xl font-bold text-brand-900 tracking-tight">MoCA Platform</span>
                         </Link>
                     </div>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <Link to="/about" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">
+                        <a href="/#about" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">
                             Acerca del test
-                        </Link>
-                        <Link to="/faq" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">
+                        </a>
+                        <a href="/#faq" className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">
                             Preguntas frecuentes
-                        </Link>
+                        </a>
                         <div className="h-4 w-px bg-brand-200 mx-2"></div>
                         <Button variant="ghost" size="sm" href="/login">
                             Soy Profesional

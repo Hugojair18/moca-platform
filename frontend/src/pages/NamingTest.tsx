@@ -54,12 +54,14 @@ export default function NamingTest() {
             totalScore: score,
             results: newResults
         });
+
+        // Save to LocalStorage for Final Report
+        localStorage.setItem(`moca_${testId}_naming`, score.toString());
     };
 
     const handleContinue = () => {
-        // Navigate to next module (Memory/Attention - to be implemented)
-        alert('Módulo de Identificación completado. Pasando a Memoria (Placeholder)');
-        navigate('/'); // Temporary
+        // Navigate to next module (Memory)
+        navigate(`/tests/${testId}/memory`);
     };
 
     return (

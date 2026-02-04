@@ -71,3 +71,139 @@ export interface IdentificationResultDTO {
         userAnswer: string;
     }>;
 }
+
+// Memory Types
+export type MemoryWord = "ROSTRO" | "SEDA" | "IGLESIA" | "CLAVEL" | "ROJO";
+
+export interface MemorySubmissionDTO {
+    testId: string;
+    trial1: MemoryWord[];
+    trial2: MemoryWord[];
+    metadata: {
+        timestamp: number;
+    };
+}
+
+// Attention Types
+export type AttentionTaskId = "DIGITS_FORWARD" | "DIGITS_BACKWARD" | "LETTERS" | "SUBTRACTION_7";
+
+export interface AttentionSubmissionDTO {
+    testId: string;
+    taskId: AttentionTaskId;
+    // For digits: the user's spoken sequence
+    // For letters: number of errors (omission/commission) or raw clicks
+    // For subtraction: the sequence of numbers
+    data: {
+        sequence?: string[];
+        errorCount?: number;
+    };
+    metadata: {
+        timestamp: number;
+    };
+}
+
+export interface AttentionResultDTO {
+    taskId: AttentionTaskId;
+    score: number;
+    maxScore: number;
+    notes?: string;
+}
+
+// Language Types
+export type LanguageTaskId = "REPEAT_SENTENCE_1" | "REPEAT_SENTENCE_2" | "FLUENCY_P";
+
+export interface LanguageSubmissionDTO {
+    testId: string;
+    taskId: LanguageTaskId;
+    data: {
+        transcript?: string;
+        wordCount?: number;
+    };
+    metadata: {
+        timestamp: number;
+    };
+}
+
+export interface LanguageResultDTO {
+    taskId: LanguageTaskId;
+    score: number;
+    maxScore: number;
+    notes?: string;
+}
+
+// Abstraction Types
+export type AbstractionTaskId = "ABSTRACTION_PRACTICE" | "ABSTRACTION_TRAIN" | "ABSTRACTION_WATCH";
+
+export interface AbstractionSubmissionDTO {
+    testId: string;
+    taskId: AbstractionTaskId;
+    data: {
+        response: string; // Text input
+    };
+    metadata: {
+        timestamp: number;
+    };
+}
+
+// Delayed Recall Types
+export type DelayedRecallTaskId = "RECALL_SPONTANEOUS" | "RECALL_CUED" | "RECALL_CHOICE";
+
+export interface DelayedRecallSubmissionDTO {
+    testId: string;
+    taskId: DelayedRecallTaskId;
+    data: {
+        words: string[]; // List of words provided by user
+        cued?: Record<string, string>; // For cued recall { "ROSTRO": "some response" }
+    };
+    metadata: {
+        timestamp: number;
+    };
+}
+
+export interface DelayedRecallResultDTO {
+    score: number;
+    maxScore: number;
+    details: {
+        spontaneous: string[];
+        cued: string[];
+        choice: string[];
+        missed: string[];
+    };
+}
+
+// Orientation Types
+export type OrientationTaskId = "DATE_FULL" | "PLACE_CITY";
+
+export interface OrientationSubmissionDTO {
+    testId: string;
+    taskId: OrientationTaskId;
+    data: {
+        date: {
+            day: number;
+            month: number;
+            year: number;
+            dayOfWeek: string;
+        };
+        place: {
+            value: string;
+            isCorrect: boolean; // Manual evaluation
+        };
+        city: {
+            value: string;
+            isCorrect: boolean; // Manual evaluation
+        };
+    };
+    metadata: {
+        timestamp: number;
+    };
+}
+
+export interface OrientationResultDTO {
+    score: number;
+    maxScore: number;
+    details: {
+        dateScore: number;
+        placeScore: number;
+        cityScore: number;
+    };
+}
